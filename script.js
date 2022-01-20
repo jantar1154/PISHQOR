@@ -1,23 +1,27 @@
 $ = (q) => document.querySelector(q)
 
+// Elements saved as variables for easier code reading
 const playArea = $('.playArea')
 const settingsArea = $('.settings')
 const gridSizeSlider = $('#gs')
 const gridCountInput = $('#gc')
 
+// various vars
 var tiles = new Array()
+var gridSize = 50
 var num = 0
 var stop = false
 var turn = 'X'
 
+// Takes attribute from HTML element
 var gridCount = playArea.getAttribute('grid')
-var gridSize = 50
 
 playArea.style.width = gridCount * gridSize
 playArea.style.height = gridCount * gridSize
 
 createGrid()
 
+// Grid size slider handler
 gridSizeSlider.addEventListener('input', () => {
     gridSize = gridSizeSlider.value
     playArea.style.width = gridCount * gridSize
@@ -34,6 +38,7 @@ gridSizeSlider.addEventListener('input', () => {
         }
 })
 
+// Grid count number handler
 gridCountInput.addEventListener('change', () => {
     gridCount = gridCountInput.value
     tiles.forEach(t => {
@@ -47,6 +52,7 @@ gridCountInput.addEventListener('change', () => {
     createGrid()
 })
 
+// Creates elements on which you can click
 function createGrid() {
     for (var y = 0; y < gridCount; y++) {
         for (var x = 0; x < gridCount; x++) {
@@ -76,6 +82,8 @@ function createGrid() {
     }
 }
 
+// Checks whether there's enough same symbols so a player can win
+// Make this code better I dare you
 function checkWin(l, t) {
     let left = (x, y) => {
         if (x > 0) {
@@ -209,7 +217,14 @@ function checkWin(l, t) {
         return 0
     }
 
-    if (checkLeft(l, t, 0) == (gridCount - 1) || checkRight(l, t, 0) == (gridCount - 1) || checkTop(l, t, 0) == (gridCount - 1) || checkBottom(l, t, 0) == (gridCount - 1) || checkTopLeft(l, t, 0) == (gridCount - 1) || checkTopRight(l, t, 0) == (gridCount - 1) || checkBottomLeft(l, t, 0) == (gridCount - 1) || checkBottomRight(l, t, 0) == (gridCount - 1)) {
+    // Declares the winner
+    let condition = () => {
+        if (gridCount < 5){
+            return 3
+        }
+        return 5
+    }
+    if (checkLeft(l, t, 0) == condition() || checkRight(l, t, 0) >= condition() || checkTop(l, t, 0) >= condition() || checkBottom(l, t, 0) >= condition() || checkTopLeft(l, t, 0) >= condition() || checkTopRight(l, t, 0) >= condition() || checkBottomLeft(l, t, 0) >= condition() || checkBottomRight(l, t, 0) >= condition())) {
         const e = document.createElement('div')
         e.textContent = 'WINNER ' + (turn == 'X' ? 'O' : 'X')
         e.style.fontFamily = 'Segoe UI'
