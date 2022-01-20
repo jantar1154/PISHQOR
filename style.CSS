@@ -9,6 +9,13 @@ h1 {
     text-align: center;
 }
 
+a {
+    color:white;
+    font-family: 'Segoe UI';
+    font-size: 30;
+    text-align: center;
+}
+
 .flex {
     position: absolute;
     left: 50%;
@@ -31,6 +38,7 @@ h1 {
     bottom: 10;
     left: 50%;
     transform: translateX(-50%);
+    text-align: center;
     width: 300;
     height: 150;
     background-color: #333;
