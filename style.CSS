@@ -1,0 +1,42 @@
+body {
+    font-family: 'Segoe UI';
+    background-color: black;
+    color:#ccc;
+}
+
+h1 {
+    font-size: 50;
+    text-align: center;
+}
+
+.flex {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.playArea {
+    width: 200;
+    height: 200;
+    background-color: #444;
+    left: 50%;
+}
+
+.settings {
+    position: fixed;
+    bottom: 10;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300;
+    height: 150;
+    background-color: #333;
+}
+
+.turn {
+    text-align: right;
+    font-size: 30;
+}
