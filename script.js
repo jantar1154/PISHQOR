@@ -220,9 +220,9 @@ function checkWin(l, t) {
     // Declares the winner
     let condition = () => {
         if (gridCount < 5) {
-            return 3
+            return 2
         }
-        return 5
+        return 4
     }
     if (checkLeft(l, t, 0) == condition() || checkRight(l, t, 0) >= condition() || checkTop(l, t, 0) >= condition() || checkBottom(l, t, 0) >= condition() || checkTopLeft(l, t, 0) >= condition() || checkTopRight(l, t, 0) >= condition() || checkBottomLeft(l, t, 0) >= condition() || checkBottomRight(l, t, 0) >= condition()) {
         const e = document.createElement('div')
